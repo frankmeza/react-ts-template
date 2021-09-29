@@ -19,6 +19,8 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
+        "format": "yarn prettier --write",
+        "format:all": "yarn prettier --write --config-precedence=file-override",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
