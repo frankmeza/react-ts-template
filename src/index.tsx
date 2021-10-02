@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import { Counter } from "./components/counter";
 
 import { store } from "./store";
 import App from "./App";
@@ -11,7 +14,10 @@ import "./index.css";
 ReactDOM.render(
     <Provider store={store}>
         <React.StrictMode>
-            <App />
+            <Router>
+                <Route path="/login" component={Counter} />
+                <Route path="/" component={App} />
+            </Router>
         </React.StrictMode>
     </Provider>,
     document.getElementById("root"),
