@@ -1,12 +1,19 @@
 import React from "react";
 import logo from "./logo.svg";
+
+import { Counter } from "./components";
+
+import "bulma/css/bulma.min.css";
 import "./App.css";
 
-function App() {
+const App = () => {
     return (
         <div className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
+
+                <Counter />
+
                 <p>
                     Edit <code>src/App.tsx</code> and save to reload.
                 </p>
@@ -21,6 +28,6 @@ function App() {
             </header>
         </div>
     );
-}
+};
 
 export default App;
