@@ -1,15 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Route } from "react-router-dom";
 
-import "bulma/css/bulma.min.css";
-import "./App.css";
+import { Login } from "./components/login";
 
 const App = () => {
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const onClickToggleLoginModal = (isOpen: boolean) => {
+        setModalOpen(isOpen);
+    };
+
     return (
         <div className="app">
-            <div className="app-header">
-                <Link to={"/login"}>LOG IN</Link>
-            </div>
+            <Link to={"/login"} onClick={() => onClickToggleLoginModal(true)}>
+                LOG IN
+            </Link>
+
+            <Route path="/login">
+                <Login
+                    isModalOpen={isModalOpen}
+                    onClickToggleLoginModal={onClickToggleLoginModal}
+                />
+            </Route>
         </div>
     );
 };

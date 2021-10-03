@@ -19,24 +19,34 @@ export const Counter = () => {
         return state.counter.value;
     });
 
+    const onClickIncrement = () => {
+        dispatch(increment());
+    };
+
+    const onClickDecrement = () => {
+        dispatch(decrement());
+    };
+
     return (
         <div>
+            <Link to={"/"}>{HOME}</Link>
             <div className="buttons">
-                <Link to={"/"}>{HOME}</Link>
                 <button
                     aria-label="Increment value"
                     className={incrementButtonStyle}
-                    onClick={() => dispatch(increment())}
+                    onClick={onClickIncrement}
                 >
                     {INCREMENT}
                 </button>
+            </div>
 
-                <span>{count}</span>
+            <span>{count}</span>
 
+            <div className="buttons">
                 <button
                     aria-label="Decrement value"
                     className={decrementButtonStyle}
-                    onClick={() => dispatch(decrement())}
+                    onClick={onClickDecrement}
                 >
                     {DECREMENT}
                 </button>
