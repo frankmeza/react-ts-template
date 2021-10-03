@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, Route } from "react-router-dom";
 
 import { Login } from "./components/login";
+import { LINK_HREF, STRINGS } from "./constants";
 
 const App = () => {
     const [isModalOpen, setModalOpen] = useState(false);
@@ -12,11 +13,14 @@ const App = () => {
 
     return (
         <div className="app">
-            <Link to={"/login"} onClick={() => onClickToggleLoginModal(true)}>
-                LOG IN
+            <Link
+                to={LINK_HREF.LOGIN}
+                onClick={() => onClickToggleLoginModal(true)}
+            >
+                {STRINGS.LOGIN}
             </Link>
 
-            <Route path="/login">
+            <Route path={LINK_HREF.LOGIN}>
                 <Login
                     isModalOpen={isModalOpen}
                     onClickToggleLoginModal={onClickToggleLoginModal}
