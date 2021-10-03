@@ -6,7 +6,7 @@ import { decrement, increment } from "../../store/slices/counter";
 import { Link } from "react-router-dom";
 
 import { getClassNames } from "./utils";
-import { LINK_HREF, STRINGS } from "../../constants";
+import { LINK_HREF, STRINGS } from "constant_values";
 
 const { DECREMENT, HOME, INCREMENT } = STRINGS;
 

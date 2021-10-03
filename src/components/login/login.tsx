@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./login.css";
 import { getClassNames } from "./utils";
-import { LINK_HREF, STRINGS } from "../../constants"; // todo fix path, make absolute
+import { LINK_HREF, STRINGS } from "constant_values";
 
 interface LoginProps {
     isModalOpen: boolean;

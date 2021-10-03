@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, Route } from "react-router-dom";
 
 import { Login } from "./components/login";
-import { LINK_HREF, STRINGS } from "./constants";
+import { LINK_HREF, STRINGS } from "constant_values";
 
 const App = () => {
     const [isModalOpen, setModalOpen] = useState(false);
