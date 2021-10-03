@@ -4,13 +4,11 @@ import { RootState } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
 import { decrement, increment } from "../../store/slices/counter";
 import { Link } from "react-router-dom";
-import {
-    incrementButtonStyle,
-    decrementButtonStyle,
-    DECREMENT,
-    HOME,
-    INCREMENT,
-} from "./constants";
+
+import { getClassNames } from "./utils";
+import { LINK_HREF, STRINGS } from "../../constants";
+
+const { DECREMENT, HOME, INCREMENT } = STRINGS;
 
 export const Counter = () => {
     const dispatch = useDispatch();
@@ -27,9 +25,11 @@ export const Counter = () => {
         dispatch(decrement());
     };
 
+    const { decrementButtonStyle, incrementButtonStyle } = getClassNames();
+
     return (
         <div>
-            <Link to={"/"}>{HOME}</Link>
+            <Link to={LINK_HREF.HOME}>{HOME}</Link>
             <div className="buttons">
                 <button
                     aria-label="Increment value"

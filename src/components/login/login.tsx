@@ -1,39 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import classNames from "classnames";
 import "./login.css";
+import { getClassNames } from "./utils";
+import { LINK_HREF, STRINGS } from "../../constants"; // todo fix path, make absolute
 
 interface LoginProps {
     isModalOpen: boolean;
     onClickToggleLoginModal: (isOpen: boolean) => void;
 }
 
-const CANCEL = "Cancel";
-const EMAIL_ADDRESS = "Email Address";
-const PASSWORD = "Password";
-const SUBMIT = "Submit";
+const { CANCEL, EMAIL_ADDRESS, PASSWORD, SUBMIT } = STRINGS;
 
 export const Login = (props: LoginProps) => {
     const { isModalOpen, onClickToggleLoginModal } = props;
-
-    const modalClassNames = classNames("modal", {
-        "is-active": isModalOpen,
-    });
-
-    const labelClassNames = classNames("label", "has-text-light");
 
     const onClickCloseModal = () => {
         onClickToggleLoginModal(false);
     };
 
+    const {
+        buttonClassNames,
+        cancelButtonClassNames,
+        labelClassNames,
+        loginFormClassNames,
+        modalClassNames,
+        submitButtonClassNames,
+        xButtonClassNames,
+    } = getClassNames({ isModalOpen });
+
     return (
         <div className={modalClassNames}>
-            <Link to="/">
+            <Link to={LINK_HREF.HOME}>
                 <div className="modal-background" onClick={onClickCloseModal} />
             </Link>
 
-            <div className="modal-content login-form">
+            <div className={loginFormClassNames}>
                 <div className="field">
                     <label className={labelClassNames}>{EMAIL_ADDRESS}</label>
                     <div className="control">
@@ -48,37 +50,44 @@ export const Login = (props: LoginProps) => {
                     <div className="control">
                         <input
                             className="input"
-                            type="text"
+                            type="password"
                             placeholder={PASSWORD}
                         />
                     </div>
                 </div>
 
-                <div className="field is-grouped">
+                <div className={buttonClassNames}>
                     <div className="control">
-                        <button
-                            className="button is-link"
-                            onClick={onClickCloseModal}
-                        >
-                            {SUBMIT}
-                        </button>
+                        <Link to={LINK_HREF.HOME}>
+                            <button
+                                className={submitButtonClassNames}
+                                onClick={onClickCloseModal}
+                            >
+                                {SUBMIT}
+                            </button>
+                        </Link>
                     </div>
 
                     <div className="control">
-                        <button
-                            className="button is-link is-light"
-                            onClick={onClickCloseModal}
-                        >
-                            {CANCEL}
-                        </button>
+                        <Link to={LINK_HREF.HOME}>
+                            <button
+                                className={cancelButtonClassNames}
+                                onClick={onClickCloseModal}
+                            >
+                                {CANCEL}
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>
-            <button
-                aria-label="close"
-                className="modal-close is-large"
-                onClick={() => onClickToggleLoginModal(false)}
-            ></button>
+
+            <Link to={LINK_HREF.HOME}>
+                <button
+                    aria-label="close"
+                    className={xButtonClassNames}
+                    onClick={() => onClickToggleLoginModal(false)}
+                ></button>
+            </Link>
         </div>
     );
 };
