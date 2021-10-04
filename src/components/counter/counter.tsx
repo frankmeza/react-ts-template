@@ -2,11 +2,12 @@ import React from "react";
 
 import { RootState } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment } from "../../store/slices/counter";
+// import { decrement } from "../../store/slices/counter";
 import { Link } from "react-router-dom";
 
 import { getClassNames } from "./utils";
 import { LINK_HREF, STRINGS } from "constant_values";
+import { incrementByNumber } from "store/sagas/counter";
 
 const { DECREMENT, HOME, INCREMENT } = STRINGS;
 
@@ -18,11 +19,12 @@ export const Counter = () => {
     });
 
     const onClickIncrement = () => {
-        dispatch(increment());
+        dispatch(incrementByNumber({ addend: 3 }));
+        // dispatch(increment());
     };
 
     const onClickDecrement = () => {
-        dispatch(decrement());
+        // dispatch(decrement());
     };
 
     const { decrementButtonStyle, incrementButtonStyle } = getClassNames();

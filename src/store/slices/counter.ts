@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { put, call } from "redux-saga/effects";
+import { createSagaAction, takeEveryAsync, putAsync } from "saga-toolkit";
 
 export interface CounterState {
     value: number;
@@ -9,6 +11,10 @@ const initialState: CounterState = {
 };
 
 const COUNTER = "counter";
+
+export const incrementByNumberSaga = createSagaAction(
+    `${COUNTER}/increment_by_number`,
+);
 
 // Redux Toolkit allows us to write "mutating" logic in reducers. It
 // doesn't actually mutate the state because it uses the Immer library,
@@ -30,7 +36,7 @@ export const counterSlice = createSlice({
     },
 });
 
-// Action creators are generated for each case reducer function
+// // Action creators are generated for each case reducer function
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 
 export default counterSlice.reducer;
