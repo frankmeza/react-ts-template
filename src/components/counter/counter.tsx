@@ -2,9 +2,9 @@ import React from "react";
 
 import { RootState } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment } from "../../store/slices/counter";
 import { Link } from "react-router-dom";
 
+import { decrement, incrementByNumber } from "../../store/slices/counter";
 import { getClassNames } from "./utils";
 import { LINK_HREF, STRINGS } from "constant_values";
 
@@ -18,7 +18,7 @@ export const Counter = () => {
     });
 
     const onClickIncrement = () => {
-        dispatch(increment());
+        dispatch(incrementByNumber(4))
     };
 
     const onClickDecrement = () => {
