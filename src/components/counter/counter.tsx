@@ -2,13 +2,13 @@ import React from "react";
 
 import { RootState } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 
 import { decrement, incrementByNumber } from "../../store/slices/counter";
 import { getClassNames } from "./utils";
-import { LINK_HREF, STRINGS } from "constant_values";
+import { STRINGS } from "constant_values";
+import "./counter.css";
 
-const { DECREMENT, HOME, INCREMENT } = STRINGS;
+const { DECREMENT, INCREMENT } = STRINGS;
 
 export const Counter = () => {
     const dispatch = useDispatch();
@@ -18,7 +18,7 @@ export const Counter = () => {
     });
 
     const onClickIncrement = () => {
-        dispatch(incrementByNumber(4))
+        dispatch(incrementByNumber(4));
     };
 
     const onClickDecrement = () => {
@@ -28,8 +28,7 @@ export const Counter = () => {
     const { decrementButtonStyle, incrementButtonStyle } = getClassNames();
 
     return (
-        <div>
-            <Link to={LINK_HREF.HOME}>{HOME}</Link>
+        <div className="counter-container">
             <div className="buttons">
                 <button
                     aria-label="Increment value"
@@ -38,11 +37,9 @@ export const Counter = () => {
                 >
                     {INCREMENT}
                 </button>
-            </div>
 
-            <span>{count}</span>
+                <span className="counter-sum">{count}</span>
 
-            <div className="buttons">
                 <button
                     aria-label="Decrement value"
                     className={decrementButtonStyle}

@@ -8,26 +8,29 @@ import { Counter } from "components/counter";
 const App = () => {
     const [isModalOpen, setModalOpen] = useState(false);
 
+    const onClickLink = () => {
+        onClickToggleLoginModal(true);
+    };
+
     const onClickToggleLoginModal = (isOpen: boolean) => {
         setModalOpen(isOpen);
     };
 
     return (
         <div className="app">
-            <Counter />
-            <Link
-                to={LINK_HREF.LOGIN}
-                onClick={() => onClickToggleLoginModal(true)}
-            >
-                {STRINGS.LOGIN}
-            </Link>
+            <div className="app-header">
+                <Link to={LINK_HREF.LOGIN} onClick={onClickLink}>
+                    {STRINGS.LOGIN}
+                </Link>
+                <Counter />
 
-            <Route path={LINK_HREF.LOGIN}>
-                <Login
-                    isModalOpen={isModalOpen}
-                    onClickToggleLoginModal={onClickToggleLoginModal}
-                />
-            </Route>
+                <Route path={LINK_HREF.LOGIN}>
+                    <Login
+                        isModalOpen={isModalOpen}
+                        onClickToggleLoginModal={onClickToggleLoginModal}
+                    />
+                </Route>
+            </div>
         </div>
     );
 };
