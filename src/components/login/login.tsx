@@ -1,9 +1,10 @@
 import React from "react";
+
 import { Link } from "react-router-dom";
 
-import "./login.css";
-import { getClassNames } from "./utils";
 import { LINK_HREF, STRINGS } from "constant_values";
+import { getClassNames } from "./utils";
+import "./login.css";
 
 interface LoginProps {
     isModalOpen: boolean;
@@ -15,9 +16,20 @@ const { CANCEL, EMAIL_ADDRESS, PASSWORD, SUBMIT } = STRINGS;
 export const Login = (props: LoginProps) => {
     const { isModalOpen, onClickToggleLoginModal } = props;
 
+    const [email, setEmail] = React.useState("");
+
     const onClickCloseModal = () => {
         onClickToggleLoginModal(false);
     };
+
+    const onChangeEmailInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = event.target;
+        setEmail(value);
+    };
+
+    if (email !== "") {
+        console.table({ email });
+    }
 
     const {
         buttonClassNames,
@@ -42,6 +54,7 @@ export const Login = (props: LoginProps) => {
                         <input
                             className="input"
                             type="text"
+                            onChange={(event) => onChangeEmailInput(event)}
                             placeholder={EMAIL_ADDRESS}
                         />
                     </div>
