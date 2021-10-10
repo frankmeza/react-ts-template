@@ -1,18 +1,18 @@
 .counter-container {
+    align-items: center;
     display: flex;
     flex: 1;
-    align-items: stretch;
 }
 
 .counter-button {
-    display: flex;
     align-content: center;
+    display: flex;
     margin: 2rem;
 }
 
 .counter-sum {
     font-size: 2rem;
-    padding: 1.5rem;
     margin-left: 2rem;
     margin-top: 2rem;
+    padding: 1.5rem;
 }

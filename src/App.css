@@ -1,0 +1,16 @@
+.app {
+    text-align: center;
+}
+
+.app-header {
+    /* max-height: 3vh; */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    font-size: 1.5rem;
+}
+
+.app-header-link {
+    padding-top: 1rem;
+}
