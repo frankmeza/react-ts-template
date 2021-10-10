@@ -28,7 +28,11 @@ export const Counter = () => {
     const { decrementButtonStyle, incrementButtonStyle } = getClassNames();
 
     return (
-        <div className="counter-container">
+        <div className="container buttons-container">
+            {/* <div className="notification is-primary">
+                If logged in, show this banner for 3 seconds
+            </div> */}
+
             <div className="buttons">
                 <button
                     aria-label="Increment value"

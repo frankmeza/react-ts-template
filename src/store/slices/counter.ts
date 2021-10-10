@@ -9,10 +9,12 @@ const initialState: CounterState = {
 };
 
 const COUNTER = "counter";
-const INCREMENT_BY_NUMBER = "counter/increment_by_number"
+const COUNTER_SAGA_INCREMENT_BY_NUMBER = "counter/saga/increment_by_number";
 
 // actions that call saga fns
-export const incrementByNumber = createAction<number>(INCREMENT_BY_NUMBER)
+export const incrementByNumber = createAction<number>(
+    COUNTER_SAGA_INCREMENT_BY_NUMBER,
+);
 
 // Redux Toolkit allows us to write "mutating" logic in reducers. It
 // doesn't actually mutate the state because it uses the Immer library,
